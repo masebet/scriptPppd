@@ -6,3 +6,12 @@ sudo apt remove program_name
 sudo apt list --installed | grep grid
 dpkg -l | grep grid
 dpkg -r program_name
+
+
+sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+sudo modprobe kvm_intel
+sudo kvm-ok
+
+    Restart your computer and Go to the system BIOS (press Del or F2 (It is different in each system,my system is Del key))
+    In Advanced tab Choose,Cpu configuration and Enabled Intel Virtualization Technology,Finally Save the Changes and Restart Your Computer.
+
