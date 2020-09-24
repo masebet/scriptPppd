@@ -16,3 +16,16 @@ sudo kvm-ok
     In Advanced tab Choose,Cpu configuration and Enabled Intel Virtualization Technology,Finally Save the Changes and Restart Your Computer.
 
 https://github.com/intel/haxm.git
+
+
+https://www.android-x86.org/releases/releasenote-7-1-r4.html
+sudo apt install alien
+sudo alien -ci android-x86-7.1-r4.x86_64.rpm 
+sudo qemu-android
+sudo apt-get remove android-x86
+repo init -u git://git.osdn.net/gitroot/android-x86/manifest -b android-x86-7.1-r4
+repo sync --no-tags --no-clone-bundle 
+cd kernel
+git fetch x86 kernel-4.19
+git checkout x86/kernel-4.19
+cd .. 
