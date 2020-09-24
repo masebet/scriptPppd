@@ -1,2 +1,8 @@
 https://www.virtualbox.org/wiki/Linux_Downloads
 sudo apt install ./virtualbox-6.1_6.1.14-140239~Ubuntu~xenial_amd64.deb
+sudo dpkg -i path_to_deb_file
+sudo apt install -f
+sudo apt remove program_name
+sudo apt list --installed | grep grid
+dpkg -l | grep grid
+dpkg -r program_name
