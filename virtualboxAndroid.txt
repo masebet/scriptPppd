@@ -17,7 +17,7 @@ sudo kvm-ok
 
 https://github.com/intel/haxm.git
 
-
+https://www.android-x86.org/
 https://www.android-x86.org/releases/releasenote-7-1-r4.html
 sudo apt install alien
 sudo alien -ci android-x86-7.1-r4.x86_64.rpm 
