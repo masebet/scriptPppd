@@ -5,12 +5,13 @@ ABORT "NO DIALTONE"
 ABORT "ERROR"  
 ABORT "NO ANSWER"
 TIMEOUT 30
-"" AT
-OK	ATE0
-OK	ATI;+CSUB;+CSQ;+CPIN?;+COPS?;+CGREG?;&D2
-OK	AT+CGDCONT=1,\"IP\",\"internet\",,0,0
-OK	ATD*99***1#
-CONNECT
+""  AT
+""  ATZ
+""	ATE0
+""	ATI;+CSUB;+CSQ;+CPIN?;+COPS?;+CGREG?;&D2
+""	AT+CGDCONT=1,\"IP\",\"internet\",,0,0
+""	ATD*99***1#
+""
 
 /etc/ppp :
 ABORT "BUSY" 
@@ -21,9 +22,11 @@ ABORT "NO ANSWER"
 ABORT "Username/Password Incorrect"
 TIMEOUT 3
 ""	AT
+TIMEOUT 60
+""  ATZ
 ""	ATE0
 ""	ATI;+CSUB;+CSQ;+CPIN?;+COPS?;+CGREG?;&D2
-""	AT+CGDCONT=1,"IP","internet",,0,0
+""	AT+CGDCONT=1,\"IP\",\"internet\",,0,0
 ""	ATD*99***1#
 ""
 
@@ -38,3 +41,4 @@ noauth
 debug
 defaultroute
 noipdefault
+usepeerdns
