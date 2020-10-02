@@ -40,3 +40,40 @@ dpkg -i linux-image-4.1-custom_4.1-custom-10.00.Custom_amd64.deb
 dpkg -i linux-headers-4.1-custom_4.1-custom-10.00.Custom_amd64.deb
 
 nano /boot/grub/grub.cfg
+
+http://onnocenter.or.id/wiki/index.php/Compile_Kernel
+sudo apt install git
+sudo apt install build-essential kernel-package fakeroot libncurses5-dev libssl-dev ccache flex bison libelf-dev
+git clone https://kernel.googlesource.com/pub/scm/linux/kernel/git/next/linux-next.git
+
+$ cd linux-next
+$ git checkout master
+$ git fetch origin
+$ git reset --hard remotes/origin/master
+
+$ make ARCH=x86_64 x86_64_defconfig 
+  YACC    scripts/kconfig/parser.tab.[ch]
+  HOSTCC  scripts/kconfig/lexer.lex.o
+  HOSTCC  scripts/kconfig/parser.tab.o
+  HOSTCC  scripts/kconfig/preprocess.o
+  HOSTCC  scripts/kconfig/symbol.o
+  HOSTLD  scripts/kconfig/conf
+#
+# configuration written to .config
+#
+
+$ make ARCH=x86_64 menuconfig
+“Kernel hacking”
+“Compile the kernel with debug info”
+“< Exit >” 
+$ make -j8
+
+                                        OBJCOPY arch/x86/boot/setup.bin
+                                          BUILD   arch/x86/boot/bzImage
+                                        Setup is 16124 bytes (padded to 16384 bytes).
+                                        System is 8673 kB
+                                        CRC f5ca994b
+                                        Kernel: arch/x86/boot/bzImage is ready  (#5)
+                                        
+sudo apt install qemu qemu-system
+qemu-system-x86_64 -no-kvm -kernel arch/x86/boot/bzImage -hda /dev/zero -append "root=/dev/zero console=ttyS0" -serial stdio -display none
