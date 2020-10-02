@@ -29,3 +29,7 @@ cd kernel
 git fetch x86 kernel-4.19
 git checkout x86/kernel-4.19
 cd .. 
+
+
+cd ~/Android/Sdk/tools && ./emulator -list-avds
+cd ~/Android/Sdk/tools && ./emulator -avd Nexus_5X_API_23
