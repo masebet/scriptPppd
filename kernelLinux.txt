@@ -1,0 +1,40 @@
+apt-get update
+apt-get install kernel-package libncurses5-dev fakeroot wget bzip2 kernel-wedge build-essential makedumpfile libncurses5 libssl-dev flex bison libelf-dev
+
+sudo su
+cd /usr/src
+rm -Rf /usr/src/linux
+wget https://cdn.kernel.org/pub/linux/kernel/v5.x/linux-5.7.2.tar.xz
+tar xJf linux-5.7.2.tar.xz -C /usr/src
+ln -s /usr/src/linux-5.7.2 /usr/src/linux
+
+cd /usr/src/linux
+cp -vi /boot/config-`uname -r` ./.config
+
+cd /usr/src/linux
+make menuconfig
+make-kpkg clean
+
+cd /usr/src/linux
+make menuconfig
+
+vi /usr/src/linux/.config
+
+kompilasi
+cd /usr/src/linux
+make all
+
+# make firmware_install
+make modules_install
+make install
+
+update-grub
+
+cd /usr/src/linux
+fakeroot make-kpkg --initrd kernel-image kernel-headers
+
+cd /usr/src
+dpkg -i linux-image-4.1-custom_4.1-custom-10.00.Custom_amd64.deb
+dpkg -i linux-headers-4.1-custom_4.1-custom-10.00.Custom_amd64.deb
+
+nano /boot/grub/grub.cfg
