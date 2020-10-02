@@ -1,3 +1,5 @@
+http://onnocenter.or.id/wiki/index.php/Compile_Kernel
+
 apt-get update
 apt-get install kernel-package libncurses5-dev fakeroot wget bzip2 kernel-wedge build-essential makedumpfile libncurses5 libssl-dev flex bison libelf-dev
 
