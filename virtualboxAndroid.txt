@@ -9,6 +9,7 @@ dpkg -r program_name
 
 
 sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+sudo adduser apt kvm
 sudo modprobe kvm_intel
 sudo kvm-ok
 
