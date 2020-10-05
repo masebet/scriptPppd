@@ -1,3 +1,12 @@
+sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
+sudo adduser apt kvm
+sudo modprobe kvm_intel
+sudo kvm-ok
+    Restart your computer and Go to the system BIOS (press Del or F2 (It is different in each system,my system is Del key))
+    In Advanced tab Choose,Cpu configuration and Enabled Intel Virtualization Technology,Finally Save the Changes and Restart Your Computer.
+https://github.com/intel/haxm.git
+buat adv yang ada play storenya
+
 https://www.virtualbox.org/wiki/Linux_Downloads
 sudo apt install ./virtualbox-6.1_6.1.14-140239~Ubuntu~xenial_amd64.deb
 sudo dpkg -i path_to_deb_file
@@ -6,17 +15,6 @@ sudo apt remove program_name
 sudo apt list --installed | grep grid
 dpkg -l | grep grid
 dpkg -r program_name
-
-
-sudo apt-get install qemu-kvm libvirt-bin ubuntu-vm-builder bridge-utils
-sudo adduser apt kvm
-sudo modprobe kvm_intel
-sudo kvm-ok
-
-    Restart your computer and Go to the system BIOS (press Del or F2 (It is different in each system,my system is Del key))
-    In Advanced tab Choose,Cpu configuration and Enabled Intel Virtualization Technology,Finally Save the Changes and Restart Your Computer.
-
-https://github.com/intel/haxm.git
 
 https://www.android-x86.org/
 https://www.android-x86.org/releases/releasenote-7-1-r4.html
