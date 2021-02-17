@@ -1,0 +1,35 @@
+https://mburumaxwell.medium.com/sim900-dial-up-connection-setup-4261476bbd21
+AT\r\n
+ATE0\r\n
+ATZ\r\n
+AT+CGDCONT=1,\"IP\",\"internet\"\r\n
+ATD*99#\r\n
+ATH\r\n
+
+========================================================
+root@kecapi:/etc/ppp/peers# ls
+gprs  gprs1  provider  sim
+
+root@kecapi:/etc/ppp/peers# cat sim 
+/dev/ttyUSB3
+115200
+user ""
+password ""
+connect '/usr/sbin/chat -v -f /etc/ppp/peers/gprs1'
+hide-password
+noauth
+debug
+persist
+defaultroute
+noipdefault
+usepeerdns
+
+root@kecapi:/etc/ppp/peers# cat gprs1
+""	AT
+TIMEOUT	60
+""	ATZ
+""	ATI;+CSUB;+CSQ;+CPIN?;+COPS?;+CGREG?;&D2
+""	AT+CGDCONT=1,\"IP\",\"m2minternet\",,0,0
+""	ATD*99***1#
+""
+=========================================================
